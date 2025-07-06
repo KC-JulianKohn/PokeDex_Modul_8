@@ -1,0 +1,11 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Londrina Solid';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/londrina-solid-v18-latin-regular.woff2') format('woff2');
+}
+
+body {
+    font-family: 'Londrina Solid';
+}
