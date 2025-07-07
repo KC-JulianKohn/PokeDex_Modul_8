@@ -12,34 +12,67 @@
     <script src="./script.js"></script>
 </head>
 
-<body>
+<body onload="init()">
 
     <header>
-        
-        <div>
-            <img src="./assets/img/_masterball.png" alt="masterball picture">
-            <span>PokeDex</span>
+        <div class="header_div">
+            <div class="header_overline">
+                <img src="./assets/img/_masterball.png" alt="masterball picture">
+                <span>PokeDex</span>
+            </div>
+
+            <div class="header_gen_selection">
+                <select id="genSelect">
+                    <option value="1">Generation 1</option>
+                    <option value="2">Generation 2</option>
+                    <option value="3">Generation 3</option>
+                    <option value="4">Generation 4</option>
+                    <option value="5">Generation 5</option>
+                    <option value="6">Generation 6</option>
+                    <option value="7">Generation 7</option>
+                    <option value="8">Generation 8</option>
+                </select>
+                <input type="text">
+            </div>
         </div>
-
-        <input type="text">
-
     </header>
 
     <main>
+        <div class="main_div">
+            <div class="pokemon_cards" id="pokemonCards">
+                <div onclick="" class="card" id="card">
+                    <section class="card_header">
+                        <span>#</span>
+                        <span>???</span>
+                    </section>
 
-        <div></div>
-        <button>Weiter</button>
+                    <section class="card_main">
+                        <button onclick="" class="shinny_button" ><img class="card_main_shinny_img" src="./assets/img/_star.png" alt="">Shinny</button>
+                        <img class="card_main_pokemon_img" src="./assets/img/_pokeball.png" alt="">
+                    </section>
 
+                    <section class="card_footer">
+                        <img src="./assets/img/BugType.png" alt="">
+                        <img src="./assets/img/DarkType.png" alt="">
+                    </section>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button onclick="" class="button_next">Next Generation</button>
+                <button onclick="" class="button_last" style="display: none;">Last Generation</button>
+            </div>
+        </div>
     </main>
 
     <footer>
-
-        <address>
-            Impressum:
-            <p><b>Pics and Infos: &nbsp;</b> https://pokeapi.co/</p>
-            <p><b>Desine: &nbsp;</b> Julian Kohn</p>
-        </address>
-
+        <div class="footer_div">
+            <address>
+                Impressum: <br>
+                <span><b>Pics & Infos: &nbsp;</b> https://pokeapi.co/</span><br>
+                <span><b>Desine: &nbsp;</b> Julian Kohn</span>
+            </address>
+        </div>
     </footer>
 
 

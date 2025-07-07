@@ -1,0 +1,180 @@
+body {
+    margin: 0;
+    font-size: 24px;
+    color: yellow;
+}
+
+.header_div,
+.main_div,
+.footer_div {
+    margin: 0 auto;
+    padding: 0 15px 0 15px;
+    max-width: 1440px;
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    background-color: red;
+    width: 100%;
+    height: 10vh;
+}
+
+.header_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_overline {
+    display: flex;
+    align-items: center;
+    font-size: 48px;
+}
+
+header img {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+}
+
+header select {
+    padding: 10px 20px 10px 20px;
+    margin-right: 20px;
+    background-color: grey;
+    color: yellow;
+    width: auto;
+    border: 0;
+    border-radius: 7px;
+}
+
+.header_gen_selection {
+    display: flex;
+    align-items: center;
+}
+
+header input {
+    padding: 5px 20px 5px 20px;
+    width: 300px;
+    height: 32px;
+    background-color: grey;
+    font-size: 20px;
+    color: yellow;
+    border: 0;
+    border-radius: 7px;
+}
+
+header input:hover {
+    cursor: pointer;
+}
+
+main {
+    background-color: rgba(255, 0, 0, 0.4);
+    width: 100%;
+    min-height: 80vh;
+    position: relative;
+}
+
+.buttons {
+    position: absolute;
+    display: flex;
+    bottom: 0px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.button_next,
+.button_last {
+    padding: 5px 20px 5px 20px;
+    margin-bottom: 20px;
+    background-color: grey;
+    font-size: 20px;
+    color: yellow;
+    border: 0;
+    border-radius: 7px;
+}
+
+.button_next:hover,
+.button_last:hover {
+    cursor: pointer;
+    background-color: yellow;
+    color: rgb(0, 0, 170);
+}
+
+.card {
+    width: 300px;
+    height: 550px;
+}
+
+.card_header {
+    background-color: rgb(1, 129, 102);
+    padding: 5px 10px 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card_main {
+    background-color: rgba(1, 129, 101, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.card_main_shinny_img {
+    width: 20px;
+    height: 20px;
+    padding-right: 10px;
+}
+
+.card_main_pokemon_img {
+    margin: 0 auto;
+    width: 250px;
+    height: 250px;
+
+}
+
+.shinny_button {
+    margin: 5px 0 -30px 5px;
+    background-color: grey;
+    width: 90px;
+    height: 30px;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shinny_button:hover {
+    cursor: pointer;
+    border-color: blue;
+}
+
+.card_footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(1, 129, 102);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.card_footer img {
+    margin: 5px 0 5px 0;
+    height: 75px;
+    width: 75px;
+}
+
+footer {
+    background-color: red;
+    width: 100%;
+    height: 10vh;
+}
+
+.footer_div {
+    display: flex;
+    align-items: center;
+}
