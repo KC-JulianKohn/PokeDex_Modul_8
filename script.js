@@ -1,6 +1,21 @@
 let pokedex = [];
+let currentGenerationIndex = 0;
+
+
+
+function showLoadingScreen() {
+    document.getElementById('loadingScreen').style.display = 'flex';
+}
+
+function hideLoadingScreen() {
+    document.getElementById('loadingScreen').style.display = 'none';
+}
 
 async function init() {
+    showLoadingScreen();
+
+    window.scrollTo(0, 0);
+
     let answer = await fetch('https://pokeapi.co/api/v2/generation/');
     let data = await answer.json();
 
@@ -8,6 +23,9 @@ async function init() {
     pokedex = await Promise.all(urls.map(url => loadGenerations(url)));
 
     console.log(pokedex);
+
+    showGeneration(currentGenerationIndex);
+    hideLoadingScreen();
 }
 
 async function loadGenerations(url) {
@@ -35,7 +53,7 @@ async function loadPokemonByUrl(url) {
             property: data.types.map(t => t.type.name)
         };
     } catch (error) {
-        console.warn("❌ Fehler bei URL:", url, error);
+        console.warn("Fehler bei URL:", url, error);
         let numberFromUrl = parseInt(url.match(/\/(\d+)\//)[1]);
         return {
             name: "unknown",
@@ -43,5 +61,53 @@ async function loadPokemonByUrl(url) {
             img: "./assets/img/_pokeball.png",
             property: ["unknown"]
         };
+    }
+}
+
+function showGeneration(index) {
+    let oneGeneration = document.getElementById('mainSectionMain');
+    oneGeneration.innerHTML = "";
+
+    let pokemons = pokedex[index].pokemons
+
+    for (let i = 0; i < pokemons.length; i++) {
+        oneGeneration.innerHTML += /*html*/`
+        <div onclick="" class="card" id="card">
+            <section class="card_header">
+                <span>#${pokemons[i].number}</span>
+                <span>${pokemons[i].name}</span>
+            </section>
+
+            <section class="card_main ${pokemons[i].property[0]}_type">
+                <img class="card_main_pokemon_img" src="${pokemons[i].img}">
+            </section>
+
+            <section class="card_footer">
+                <img src="./assets/img/${pokemons[i].property[0]}Type.png">
+                ${pokemons[i].property[1] ? `<img src="./assets/img/${pokemons[i].property[1]}Type.png">` : ""}                    
+            </section>
+        </div>`
+    };
+}
+
+function nextGeneration() {
+    if (currentGenerationIndex < 7) {
+        currentGenerationIndex++;
+        document.getElementById('buttonPrevious').style.display = 'flex';
+        init();
+    }
+    if (currentGenerationIndex === 7) {
+        document.getElementById('buttonNext').style.display = 'none';
+    }
+}
+
+function previousGeneration() {
+    if (currentGenerationIndex > 0) {
+        currentGenerationIndex--;
+        document.getElementById('buttonNext').style.display = 'flex';
+        init();
+    }
+    if (currentGenerationIndex === 0) {
+        document.getElementById('buttonPrevious').style.display = 'none';
     }
 }

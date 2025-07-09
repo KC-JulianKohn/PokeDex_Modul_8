@@ -14,6 +14,10 @@
 
 <body onload="init()">
 
+    <div class="loading_screen" id="loadingScreen" style="display: none;">
+        <img src="./assets/img/_simple_pokeball.gif" alt="Loading Screen">
+    </div>
+
     <header>
         <div class="header_div">
             <div class="header_overline">
@@ -39,30 +43,14 @@
 
     <main>
         <div class="main_div">
-            <section class="main_section_main" id="mainSectionMain">
-                <div onclick="" class="card" id="card">
-                    <section class="card_header">
-                        <span>#</span>
-                        <span>???</span>
-                    </section>
-
-                    <section class="card_main">
-                        <img class="card_main_pokemon_img" src="./assets/img/_pokeball.png" alt="">
-                    </section>
-
-                    <section class="card_footer">
-                        <img src="./assets/img/BugType.png" alt="">
-                        <img src="./assets/img/DarkType.png" alt="">
-                    </section>
-                </div>
-            </section>
+            <section class="main_section_main" id="mainSectionMain"></section>
         </div>
     </main>
 
     <section class="button_section">
         <div class="buttons">
-            <button onclick="" class="button_last" style="display: none;">Last Generation</button>
-            <button onclick="" class="button_next">Next Generation</button>
+            <button onclick="previousGeneration()" id="buttonPrevious" class="button_previous" style="display: none;">Previous Generation</button>
+            <button onclick="nextGeneration()" id="buttonNext" class="button_next">Next Generation</button>
         </div>
     </section>
 
