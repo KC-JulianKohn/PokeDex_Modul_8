@@ -2,7 +2,6 @@ let pokedex = [];
 let currentGenerationIndex = 0;
 
 
-
 function showLoadingScreen() {
     document.getElementById('loadingScreen').style.display = 'flex';
 }
@@ -10,6 +9,8 @@ function showLoadingScreen() {
 function hideLoadingScreen() {
     document.getElementById('loadingScreen').style.display = 'none';
 }
+
+dropDownEventListeners();
 
 async function init() {
     showLoadingScreen();
@@ -25,6 +26,8 @@ async function init() {
     console.log(pokedex);
 
     showGeneration(currentGenerationIndex);
+    dropDownUpdate();
+
     hideLoadingScreen();
 }
 
@@ -83,8 +86,8 @@ function showGeneration(index) {
             </section>
 
             <section class="card_footer">
-                <img src="./assets/img/${pokemons[i].property[0]}Type.png">
-                ${pokemons[i].property[1] ? `<img src="./assets/img/${pokemons[i].property[1]}Type.png">` : ""}                    
+                <img class="${pokemons[i].property[0]}_type" src="./assets/img/${pokemons[i].property[0]}Type.png">
+                ${pokemons[i].property[1] ? `<img class="${pokemons[i].property[1]}_type" src="./assets/img/${pokemons[i].property[1]}Type.png">` : ""}                    
             </section>
         </div>`
     };
@@ -94,10 +97,8 @@ function nextGeneration() {
     if (currentGenerationIndex < 7) {
         currentGenerationIndex++;
         document.getElementById('buttonPrevious').style.display = 'flex';
+        updateButtonVisibility()
         init();
-    }
-    if (currentGenerationIndex === 7) {
-        document.getElementById('buttonNext').style.display = 'none';
     }
 }
 
@@ -105,9 +106,24 @@ function previousGeneration() {
     if (currentGenerationIndex > 0) {
         currentGenerationIndex--;
         document.getElementById('buttonNext').style.display = 'flex';
+        updateButtonVisibility()
         init();
     }
-    if (currentGenerationIndex === 0) {
-        document.getElementById('buttonPrevious').style.display = 'none';
-    }
+}
+
+function dropDownUpdate() {
+    document.getElementById('genSelect').value = currentGenerationIndex + 1;
+}
+
+function dropDownEventListeners() {
+    document.getElementById('genSelect').addEventListener('change', () => {
+        currentGenerationIndex = parseInt(document.getElementById('genSelect').value) - 1;
+        updateButtonVisibility()
+        init();
+    });
+}
+
+function updateButtonVisibility() {
+    document.getElementById('buttonNext').style.display = currentGenerationIndex >= 7 ? 'none' : 'flex';
+    document.getElementById('buttonPrevious').style.display = currentGenerationIndex <= 0 ? 'none' : 'flex';
 }

@@ -150,6 +150,7 @@ main {
 }
 
 .card_footer img {
+    border-radius: 50px;
     height: 55px;
     width: 55px;
 }
