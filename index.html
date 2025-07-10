@@ -35,8 +35,12 @@
                     <option value="6">Generation 6</option>
                     <option value="7">Generation 7</option>
                     <option value="8">Generation 8</option>
+                    <option value="9">Generation 9</option>
                 </select>
-                <input type="text">
+                <div>
+                    <input type="text" id="searchPokemons" placeholder="Pokemon search .......">
+                    <p id="searchMessage" class="search_message">at least 3 letters</p>
+                </div>
             </div>
         </div>
     </header>
@@ -49,7 +53,8 @@
 
     <section class="button_section">
         <div class="buttons">
-            <button onclick="previousGeneration()" id="buttonPrevious" class="button_previous" style="display: none;">Previous Generation</button>
+            <button onclick="previousGeneration()" id="buttonPrevious" class="button_previous"
+                style="display: none;">Previous Generation</button>
             <button onclick="nextGeneration()" id="buttonNext" class="button_next">Next Generation</button>
         </div>
     </section>
