@@ -54,7 +54,7 @@ async function loadPokemonByUrl(url) {
             name: data.name,
             number: data.id,
             img: data.sprites.front_default || "./assets/img/_pokeball.png",
-            hoverImg: data.sprites.other?.showdown?.front_default || "./assets/img/_pokeball.png",
+            hoverImg: data.sprites.other?.showdown?.front_default || data.sprites.front_default,
             cry: data.cries.legacy,
             property: data.types.map(t => t.type.name)
         };
@@ -179,7 +179,7 @@ function showFilteredPokemons(pokemons) {
 
     for (let i = 0; i < pokemons.length; i++) {
         container.innerHTML += /*html*/`
-        <div class="card">
+        <div onclick="" class="card" id="card">
             <section class="card_header">
                 <span>#${pokemons[i].number}</span>
                 <span>${pokemons[i].name}</span>
@@ -187,13 +187,13 @@ function showFilteredPokemons(pokemons) {
 
             <section class="card_main ${pokemons[i].property[0]}_type">
                 <img class="card_main_pokemon_img default_img" src="${pokemons[i].img}">
-                <img class="card_main_pokemon_img hover_img" src="${pokemons[i].hoverImg}">
+                <img class="card_main_pokemon_hover_img hover_img" src="${pokemons[i].hoverImg}">
             </section>
 
             <section class="card_footer">
                 <img class="${pokemons[i].property[0]}_type" src="./assets/img/${pokemons[i].property[0]}Type.png">
-                ${pokemons[i].property[1] ? `<img class="${pokemons[i].property[1]}_type" src="./assets/img/${pokemons[i].property[1]}Type.png">` : ""}
+                ${pokemons[i].property[1] ? `<img class="${pokemons[i].property[1]}_type" src="./assets/img/${pokemons[i].property[1]}Type.png">` : ""}                    
             </section>
-        </div>`;
+        </div>`
     }
 }
