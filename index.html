@@ -8,7 +8,11 @@
     <title>PokeDex</title>
     <link rel="stylesheet" href="./styles/font.css">
     <link rel="stylesheet" href="./styles/typs.css">
+    <link rel="stylesheet" href="./styles/pokemoncards.css">
+    <link rel="stylesheet" href="./styles/popupcards.css">
     <link rel="stylesheet" href="./style.css">
+    <script src="./scripts/templates.js" defer></script>
+    <script src="./scripts/popupcards.js" defer></script>
     <script src="./script.js" defer></script>
 </head>
 
@@ -18,65 +22,7 @@
         <img src="./assets/img/_simple_pokeball.gif" alt="Loading Screen">
     </section>
 
-    <section>
-        <div>
-            <div>
-                <button onclick="" id="" class=""></button>
-            </div>
-
-            <div>
-                <div>
-                    <button onclick="" id="" class=""></button>
-                </div>
-
-                <div>
-                    <section>
-                        <div>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <div>
-                            <img src="" alt="">
-                            <img src="" alt="">
-                        </div>
-                    </section>
-
-                    <section>
-                        <div>
-                            <button></button>
-                        </div>
-                        <div>
-                            <img src="" alt="">
-                        </div>
-                    </section>
-
-                    <section>
-                        <div>
-                            <span></span>
-                        </div>
-                        <div>
-                            <span></span>
-                        </div>
-                        <div>
-                            <span></span>
-                        </div>
-                    </section>
-
-                    <section>
-                        <span></span>
-                    </section>
-
-                </div>
-
-                <div>
-                    <button onclick="" id="" class=""></button>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
+    <section id="popupTarget" class="popup_target"></section>
 
     <header>
         <div class="header_div">
@@ -84,7 +30,6 @@
                 <img src="./assets/img/_masterball.png" alt="masterball picture">
                 <span>PokeDex</span>
             </div>
-
             <div class="header_gen_selection">
                 <select id="genSelect">
                     <option value="1">Generation 1</option>
@@ -119,7 +64,6 @@
         </div>
     </section>
 
-
     <footer>
         <div class="footer_div">
             <address>
@@ -129,10 +73,6 @@
             </address>
         </div>
     </footer>
-
-
-
-
 </body>
 
 </html>

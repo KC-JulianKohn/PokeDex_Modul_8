@@ -29,7 +29,7 @@ async function init() {
         showGeneration(currentGenerationIndex);
         dropDownUpdate();
         setupSearch();
-    });
+    })
 }
 
 async function loadGenerations(url) {
@@ -42,7 +42,7 @@ async function loadGenerations(url) {
     return {
         generation: data.name,
         pokemons: pokemonData
-    };
+    }
 }
 
 async function loadPokemonByUrl(url) {
@@ -50,23 +50,11 @@ async function loadPokemonByUrl(url) {
         let answer = await fetch(url);
         let data = await answer.json();
 
-        return {
-            name: data.name,
-            number: data.id,
-            img: data.sprites.front_default || "./assets/img/_pokeball.png",
-            hoverImg: data.sprites.other?.showdown?.front_default || data.sprites.front_default,
-            cry: data.cries.legacy,
-            property: data.types.map(t => t.type.name)
-        };
+        return returnPokemonData(data);
     } catch (error) {
         console.warn("Fehler bei URL:", url, error);
         let numberFromUrl = parseInt(url.match(/\/(\d+)\//)[1]);
-        return {
-            name: "unknown",
-            number: numberFromUrl,
-            img: "./assets/img/_pokeball.png",
-            property: ["unknown"]
-        };
+        return returnPokemonDataError(numberFromUrl);
     }
 }
 
@@ -79,25 +67,9 @@ async function showGeneration(index) {
         let pokemons = pokedex[index].pokemons
 
         for (let i = 0; i < pokemons.length; i++) {
-            oneGeneration.innerHTML += /*html*/`
-        <div onclick="" class="card" id="card">
-            <section class="card_header">
-                <span>#${pokemons[i].number}</span>
-                <span>${pokemons[i].name}</span>
-            </section>
-
-            <section class="card_main ${pokemons[i].property[0]}_type">
-                <img class="card_main_pokemon_img default_img" src="${pokemons[i].img}">
-                <img class="card_main_pokemon_hover_img hover_img" src="${pokemons[i].hoverImg}">
-            </section>
-
-            <section class="card_footer">
-                <img class="${pokemons[i].property[0]}_type" src="./assets/img/${pokemons[i].property[0]}Type.png">
-                ${pokemons[i].property[1] ? `<img class="${pokemons[i].property[1]}_type" src="./assets/img/${pokemons[i].property[1]}Type.png">` : ""}                    
-            </section>
-        </div>`
+            oneGeneration.innerHTML += renderCard(pokemons[i]);
         }
-    });
+    })
 }
 
 function nextGeneration() {
@@ -130,7 +102,7 @@ function dropDownEventListeners() {
         updateButtonVisibility()
         showGeneration(currentGenerationIndex);
         document.getElementById('searchPokemons').value = '';
-    });
+    })
 }
 
 function updateButtonVisibility() {
@@ -148,7 +120,7 @@ function setupSearch() {
     input.addEventListener('input', () => {
         let searchTerm = input.value.trim().toLowerCase();
         filterName(searchTerm);
-    });
+    })
 }
 
 function filterName(searchTerm) {
@@ -178,22 +150,6 @@ function showFilteredPokemons(pokemons) {
     container.innerHTML = '';
 
     for (let i = 0; i < pokemons.length; i++) {
-        container.innerHTML += /*html*/`
-        <div onclick="" class="card" id="card">
-            <section class="card_header">
-                <span>#${pokemons[i].number}</span>
-                <span>${pokemons[i].name}</span>
-            </section>
-
-            <section class="card_main ${pokemons[i].property[0]}_type">
-                <img class="card_main_pokemon_img default_img" src="${pokemons[i].img}">
-                <img class="card_main_pokemon_hover_img hover_img" src="${pokemons[i].hoverImg}">
-            </section>
-
-            <section class="card_footer">
-                <img class="${pokemons[i].property[0]}_type" src="./assets/img/${pokemons[i].property[0]}Type.png">
-                ${pokemons[i].property[1] ? `<img class="${pokemons[i].property[1]}_type" src="./assets/img/${pokemons[i].property[1]}Type.png">` : ""}                    
-            </section>
-        </div>`
+        container.innerHTML += renderCard(pokemons[i]);
     }
 }
