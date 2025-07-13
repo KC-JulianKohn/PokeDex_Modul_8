@@ -97,3 +97,17 @@ function renderPopupHtml(data) {
             </div>
         </div>`
 }
+
+function renderStats(stats) {
+  return `
+    <table class="stats-table">
+      ${stats.map(stat => `
+        <tr>
+          <td class="stat-label">${stat.stat.name}</td>
+          <td class="stat-separator">&nbsp; : &nbsp;</td>
+          <td class="stat-value">${stat.base_stat}</td>
+        </tr>
+      `).join('')}
+    </table>
+  `;
+}
