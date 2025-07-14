@@ -5,14 +5,10 @@ let currentPokemonList = [];
 
 async function controllLoadingScreen(action) {
     document.getElementById('loadingScreen').style.display = 'flex';
-
     window.scrollTo(0, 0);
-
     let minDelay = new Promise(resolve => setTimeout(resolve, 1600));
     let task = action();
-
     await Promise.all([minDelay, task]);
-
     document.getElementById('loadingScreen').style.display = 'none';
 }
 
@@ -20,13 +16,10 @@ dropDownEventListeners();
 
 async function init() {
     await controllLoadingScreen(async () => {
-
         let answer = await fetch('https://pokeapi.co/api/v2/generation/');
         let data = await answer.json();
-
         let urls = data.results.slice(0, 9).map(generation => generation.url);
         pokedex = await Promise.all(urls.map(url => loadGenerations(url)));
-
         showGeneration(currentGenerationIndex);
         dropDownUpdate();
         setupSearch();
@@ -37,7 +30,6 @@ async function loadGenerations(url) {
     let answer = await fetch(url);
     let data = await answer.json();
     let pokemonUrls = data.pokemon_species.map(p => p.url.replace("pokemon-species", "pokemon"));
-
     let pokemonData = await Promise.all(pokemonUrls.map(url => loadPokemonByUrl(url)));
     pokemonData.sort((a, b) => a.number - b.number);
     return {
@@ -50,7 +42,6 @@ async function loadPokemonByUrl(url) {
     try {
         let answer = await fetch(url);
         let data = await answer.json();
-
         return returnPokemonData(data);
     } catch (error) {
         console.warn("Fehler bei URL:", url, error);
@@ -61,12 +52,9 @@ async function loadPokemonByUrl(url) {
 
 async function showGeneration(index) {
     await controllLoadingScreen(async () => {
-
         let oneGeneration = document.getElementById('mainSectionMain');
         oneGeneration.innerHTML = "";
-
         let pokemons = pokedex[index].pokemons
-
         for (let i = 0; i < pokemons.length; i++) {
             oneGeneration.innerHTML += renderCard(pokemons[i]);
         }
@@ -135,13 +123,9 @@ function filterName(searchTerm) {
         hideButtons();
     } else {
         document.getElementById('searchMessage').style.visibility = 'hidden'
-
         hideButtons();
-
         let allPokemons = pokedex.flatMap(generation => generation.pokemons);
-
         let filtered = allPokemons.filter(p => p.name.toLowerCase().includes(searchTerm));
-
         showFilteredPokemons(filtered);
     }
 }
@@ -149,7 +133,6 @@ function filterName(searchTerm) {
 function showFilteredPokemons(pokemons) {
     let container = document.getElementById('mainSectionMain');
     container.innerHTML = '';
-
     for (let i = 0; i < pokemons.length; i++) {
         container.innerHTML += renderCard(pokemons[i]);
     }

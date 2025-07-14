@@ -5,12 +5,10 @@ function renderCard(pokemon) {
                 <span>#${pokemon.number}</span>
                 <span>${pokemon.name}</span>
             </section>
-
             <section class="card_main ${pokemon.property[0]}_type">
                 <img class="card_main_pokemon_img default_img" src="${pokemon.img}">
                 <img class="card_main_pokemon_hover_img hover_img" src="${pokemon.hoverImg}">
             </section>
-
             <section class="card_footer">
                 <img class="${pokemon.property[0]}_type" src="./assets/img/${pokemon.property[0]}Type.png">
                 ${pokemon.property[1] ? `<img class="${pokemon.property[1]}_type" src="./assets/img/${pokemon.property[1]}Type.png">` : ""}                    
@@ -43,12 +41,10 @@ function renderPopupHtml(data) {
             <div>
                 <button onclick="closePokemonPopup()" id="popupCloseBtn" class="popup_close_btn">✖</button>
             </div>
-
             <div class="popup_main_part">
                 <div>
                     <button onclick="showPreviousPokemon()" id="btnPrev" class="popup_nav_btn">&lt;</button>
                 </div>
-
                 <div class="popup_body">
                     <section class="popup_header">
                         <div class="popup_header_text">
@@ -60,7 +56,6 @@ function renderPopupHtml(data) {
                             ${data.types[1] ? `<img class="${data.types[1].type.name}_type" src="./assets/img/${data.types[1].type.name}Type.png">` : ""}
                         </div>
                     </section>
-
                     <section class="popup_image_section ${data.types[0].type.name}_type">
                         <div class="popup_image_controls">
                             <button onclick="playPokemonCry()" id="btnPlayCry" class="popup_img_btn">🔊 Audio</button>
@@ -71,7 +66,6 @@ function renderPopupHtml(data) {
                             <img id="pokemonMainImageShiny" src="${data.sprites.other.home.front_shiny}" style="display: none;">
                         </div>
                     </section>
-
                     <section class="popup_tabs">
                         <div onclick="showTabContent('description')" id="tabDescription" class="popup_tab activ">
                             <span>Description</span>
@@ -80,7 +74,6 @@ function renderPopupHtml(data) {
                             <span>Stats</span>
                         </div>
                     </section>
-
                     <section class="popup_tab_content">
                         <div id="tabContentDescription" class="tab_content_block">
                             <p>${data.description}</p>
@@ -90,7 +83,6 @@ function renderPopupHtml(data) {
                         </div>
                     </section>
                 </div>
-
                 <div>
                     <button onclick="showNextPokemon()" id="btnNext" class="popup_nav_btn">&gt;</button>
                 </div>
@@ -108,6 +100,5 @@ function renderStats(stats) {
           <td class="stat-value">${stat.base_stat}</td>
         </tr>
       `).join('')}
-    </table>
-  `;
+    </table>`;
 }
