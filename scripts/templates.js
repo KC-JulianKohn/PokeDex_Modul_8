@@ -10,8 +10,8 @@ function renderCard(pokemon) {
                 <img class="card_main_pokemon_hover_img hover_img" src="${pokemon.hoverImg}">
             </section>
             <section class="card_footer">
-                <img class="${pokemon.property[0]}_type" src="./assets/img/${pokemon.property[0]}Type.png">
-                ${pokemon.property[1] ? `<img class="${pokemon.property[1]}_type" src="./assets/img/${pokemon.property[1]}Type.png">` : ""}                    
+                <img class="${pokemon.property[0]}_type" src="./assets/img/${pokemon.property[0]}type.png">
+                ${pokemon.property[1] ? `<img class="${pokemon.property[1]}_type" src="./assets/img/${pokemon.property[1]}type.png">` : ""}                    
             </section>
         </div>`
 }
@@ -52,8 +52,8 @@ function renderPopupHtml(data) {
                             <span>${data.name}</span>
                         </div>
                         <div class="popup_header_types">
-                            <img class="${data.types[0].type.name}_type" src="./assets/img/${data.types[0].type.name}Type.png">
-                            ${data.types[1] ? `<img class="${data.types[1].type.name}_type" src="./assets/img/${data.types[1].type.name}Type.png">` : ""}
+                            <img class="${data.types[0].type.name}_type" src="./assets/img/${data.types[0].type.name}type.png">
+                            ${data.types[1] ? `<img class="${data.types[1].type.name}_type" src="./assets/img/${data.types[1].type.name}type.png">` : ""}
                         </div>
                     </section>
                     <section class="popup_image_section ${data.types[0].type.name}_type">
