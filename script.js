@@ -1,6 +1,7 @@
 let pokedex = [];
 let currentGenerationIndex = 0;
-
+let currentPokemonIndex = null;
+let currentPokemonList = [];   
 
 async function controllLoadingScreen(action) {
     document.getElementById('loadingScreen').style.display = 'flex';
