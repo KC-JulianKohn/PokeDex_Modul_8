@@ -14,7 +14,7 @@
 }
 
 .popup_close_btn {
-    margin: 20px;
+    margin-bottom: 10px;
     background-color: red;
     display: flex;
     justify-content: center;
@@ -54,8 +54,8 @@
 }
 
 .popup_body {
-    width: 700px;
-    height: 950px;
+    width: 480px;
+    height: 750px;
     font-size: 32px;
     display: flex;
     flex-direction: column;
@@ -102,7 +102,7 @@
 }
 
 .popup_image_controls {
-    margin-bottom: -20px;
+    margin-bottom: -40px;
     padding: 5px 15px 5px 15px;
     display: flex;
     justify-content: space-between;
@@ -121,8 +121,8 @@
 }
 
 .popup_image_display img {
-    width: 550px;
-    height: 550px;
+    width: 400px;
+    height: 400px;
 }
 
 .popup_tabs {

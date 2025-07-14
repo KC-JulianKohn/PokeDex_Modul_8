@@ -1,7 +1,7 @@
 let pokedex = [];
 let currentGenerationIndex = 0;
 let currentPokemonIndex = null;
-let currentPokemonList = [];   
+let currentPokemonList = [];
 
 async function controllLoadingScreen(action) {
     document.getElementById('loadingScreen').style.display = 'flex';
@@ -61,6 +61,15 @@ async function showGeneration(index) {
     })
 }
 
+function showGenerationInstant(index) {
+    let oneGeneration = document.getElementById('mainSectionMain');
+    oneGeneration.innerHTML = "";
+    let pokemons = pokedex[index].pokemons
+    for (let i = 0; i < pokemons.length; i++) {
+        oneGeneration.innerHTML += renderCard(pokemons[i]);
+    }
+}
+
 function nextGeneration() {
     if (currentGenerationIndex < 8) {
         currentGenerationIndex++;
@@ -116,7 +125,7 @@ function filterName(searchTerm) {
     if (searchTerm.length === 0) {
         document.getElementById('searchMessage').style.visibility = 'hidden'
         updateButtonVisibility();
-        showGeneration(currentGenerationIndex);
+        showGenerationInstant(currentGenerationIndex);
     } else if (searchTerm.length < 3) {
         document.getElementById('searchMessage').style.visibility = 'visible'
         document.getElementById('mainSectionMain').innerHTML = '';
